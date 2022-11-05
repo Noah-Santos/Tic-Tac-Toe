@@ -4,9 +4,15 @@
     flex-direction: column;
 }
 .but{
-    width:15vw;
-    height: 15vw;
+    width:10vw;
+    height: 10vw;
 }
 .block{
     display: block;
+}
+.span{
+    font-size: 200%;
+}
+h1{
+    font-size: 350%;
 }

@@ -14,19 +14,34 @@
             <h1>Tic-Tac-Toe</h1>
         </div>
         <div>
-            <button class="but" id="square1"></button>
-            <button class="but" id="square2"></button>
-            <button class="but" id="square3"></button>
+            <span class="span">Player: </span>
+            <span id="player" class="span">X</span>
         </div>
         <div>
-            <button class="but" id="square4"></button>
-            <button class="but" id="square5"></button>
-            <button class="but" id="square6"></button>
+            <span class="span">Turn: </span>
+            <span id="turn" class="span">0</span>
         </div>
         <div>
-            <button class="but" id="square7"></button>
-            <button class="but" id="square8"></button>
-            <button class="but" id="square9"></button>
+            <button class="but" id="square1" onclick="mark1()"></button>
+            <button class="but" id="square2" onclick="mark2()"></button>
+            <button class="but" id="square3" onclick="mark3()"></button>
+        </div>
+        <div>
+            <button class="but" id="square4" onclick="mark4()"></button>
+            <button class="but" id="square5" onclick="mark5()"></button>
+            <button class="but" id="square6" onclick="mark6()"></button>
+        </div>
+        <div>
+            <button class="but" id="square7" onclick="mark7()"></button>
+            <button class="but" id="square8" onclick="mark8()"></button>
+            <button class="but" id="square9" onclick="mark9()"></button>
+        </div>
+        <div>
+            <span class="span">Wins</span>
+        </div>
+        <div class="wins">
+            <span class="span">X-Wins: <span id="xWin">0</span></span>
+            <span class="span">Y-Wins: <span id="yWin">0</span></span>
         </div>
     </div>
 </body>
