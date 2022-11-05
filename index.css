@@ -1,0 +1,12 @@
+.flexbox{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.but{
+    width:15vw;
+    height: 15vw;
+}
+.block{
+    display: block;
+}
