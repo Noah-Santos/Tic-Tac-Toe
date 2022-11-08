@@ -1,3 +1,4 @@
+"use strict";
 //creating board array
 let board=[
     ["null", "null", "null"],
@@ -5,15 +6,19 @@ let board=[
     ["null", "null", "null"]
 ];
 let turn=0;
+let xWin=0;
+let yWin=0;
+let space=0;
 
 //adds player piece the array
 function showBoard(x, y){
+    console.log(board);
     if(checkSpace(x,y)){
         if(turn%2==1){
-            board[x][y]=="o";
+            board[x][y]="o";
             return true;
         }else{
-            board[x][y]=="y";
+            board[x][y]="x";
             return true;
         }
     }
@@ -42,20 +47,34 @@ function change(x,y){
     }
 }
 
-//changes the image to the player that selected it
-function setImg(square){
-    if(turn%2==1){
-        document.getElementById(`square${square}`).style.backgroundImage="o.png";
-    }else{
-        document.getElementById(`square${square}`).style.backgroundImage="x.png";
+//function to check for winner
+function checkWin(){
+    // checks for verticle wins
+    if(board[space][space]==board[space+1][space] && board[space][space]==board[space+2][space] && board[space][space]=="X"){
+        xWin++;
+        domcument.getElementById("xWin").innerHTML=xWin;
+        console.log("X wins");
+    }else if(board[space][space]==board[space+1][space] && board[space][space]==board[space+2][space] && board[space][space]=="Y"){
+        yWin++;
+        domcument.getElementById("yWin").innerHTML=yWin; 
+    }
+    //checks for horizontal wins
+    if(board[space][space]==board[space][space+1] && board[space][space]==board[space][space+2] && board[space][space]=="X"){
+        xWin++;
+        domcument.getElementById("xWin").innerHTML=xWin;
+    }else if(board[space][space]==board[space][space+1] && board[space][space]==board[space][space+2] && board[space][space]=="Y"){
+        yWin++;
+        domcument.getElementById("yWin").innerHTML=yWin; 
     }
 }
+
 //changes the button to an image if clicked
 //also changes the turn number and player turn
 function mark1(){
     let x =0;
     let y=0;
     let square=1;
+    // (turn%2==0)?document.getElementById("square1").innerHTML="X":document.getElementById("square1").innerHTML="O";
     change(x,y);
 }
 function mark2(){
@@ -71,8 +90,8 @@ function mark3(){
     change(x,y);
 }
 function mark4(){
-    let x =0;
-    let y=1;
+    let x =1;
+    let y=0;
     let square=4;
     change(x,y);
 }
@@ -89,14 +108,14 @@ function mark6(){
     change(x,y);
 }
 function mark7(){
-    let x =0;
-    let y=2;
+    let x =2;
+    let y=0;
     let square=7;
     change(x,y);
 }
 function mark8(){
-    let x =1;
-    let y=2;
+    let x =2;
+    let y=1;
     let square=8;
     change(x,y);
 }
