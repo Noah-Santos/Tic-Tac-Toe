@@ -1,28 +1,15 @@
 "use strict";
 //creating board array
-let board=[
-    ["null", "null", "null"],
-    ["null", "null", "null"],
-    ["null", "null", "null"]
-];
+function game(){
+    let board=[
+        ["null", "null", "null"],
+        ["null", "null", "null"],
+        ["null", "null", "null"]
+    ];
+}
 let turn=0;
 let xWin=0;
-let yWin=0;
-
-// //adds player piece the array
-// function showBoard(x, y){
-//     console.log(board);
-//     if(checkSpace(x,y)){
-//         if(turn%2==1){
-//             board[x][y]="o";
-//             return true;
-//         }else{
-//             board[x][y]="x";
-//             return true;
-//         }
-//     }
-//     return false;
-// }
+let oWin=0;
 
 //checks if the space is open
 function checkSpace(x, y){
@@ -37,11 +24,9 @@ function checkSpace(x, y){
 function change(x,y, square){
     if(checkSpace(x,y)){
         if(turn%2==1){
-            // document.getElementById("player").innerHTML="O";
             document.getElementById(square).innerHTML="O";
             board[x][y]="o";
         }else{
-            // document.getElementById("player").innerHTML="X";
             document.getElementById(square).innerHTML="X";
             board[x][y]="x";
         }
@@ -49,46 +34,55 @@ function change(x,y, square){
         document.getElementById("turn").innerHTML=turn;
         if(turn%2==1){
             document.getElementById("player").innerHTML="O";
-            // board[x][y]="o";
         }else{
             document.getElementById("player").innerHTML="X";
-            // document.getElementById(square).innerHTML="X";
-            // board[x][y]="x";
         }
     }
-    // showBoard(x, y);
     console.log(board);
 }
 
-
-const CHECK = [0, 1, 2];
-//function to check for winner
+//function to check for winner also checks for draws
 function checkWin(){
-    // checks for verticle wins
-    for(let i=0;i<3;i++){
-        if(board[0][i]==board[1][i] && board[0][i]==board[2][i] && board[0][i]=="X"){
-            xWin++;
-            document.getElementById("xWin").innerHTML=xWin;
-            console.log("X wins");
-        }else if(board[0][i]==board[1][i] && board[0][i]==board[2][i] && board[0][i]=="Y"){
-            yWin++;
-            document.getElementById("yWin").innerHTML=yWin; 
+    for(let c=0;c<3;c++){
+        let xChecks=0;
+        let oChecks=0;
+        for(let r=0;r<3;r++){
+            if(board[r][c]=="x"){
+                xChecks++;
+            }else if(board[r][c]=="o"){
+                oChecks++;
+            }
+            check(xChecks,oChecks);
         }
     }
-    //checks for horizontal wins
-    for(let i=0;i<3;i++){
-        if(board[i][0]==board[i][1] && board[i][0]==board[i][2] && board[i][0]=="X"){
-            xWin++;
-            document.getElementById("xWin").innerHTML=xWin;
-        }else if(board[i][0]==board[i][1] && board[i][0]==board[i][2] && board[i][0]=="Y"){
-            yWin++;
-            document.getElementById("yWin").innerHTML=yWin; 
+    for(let c=0;c<3;c++){
+        let xChecks=0;
+        let oChecks=0;
+        for(let r=0;r<3;r++){
+            if(board[c][r]=="x"){
+                xChecks++;
+            }else if(board[c][r]=="o"){
+                oChecks++;
+            }
+            check(xChecks,oChecks);
         }
     }
 }
 
-//changes the button to an image if clicked
-//also changes the turn number and player turn
+//checks for hoirzontal and vertical wins
+function check(xChecks,oChecks){
+    if(xChecks==3){
+        xWin++;
+        document.getElementById("xWin").innerHTML=xWin;
+        document.getElementById("printW").innerHTML="X Wins";
+    }else if(oChecks==3){
+        oWin++;
+        document.getElementById("oWin").innerHTML=oWin;
+        document.getElementById("printW").innerHTML="O Wins";
+    }
+}
+
+//changes the turn number and player turn
 function mark1(position){
     let place = position.split('');
     change(parseInt(place[0]),parseInt(place[1]),"sqr1");
