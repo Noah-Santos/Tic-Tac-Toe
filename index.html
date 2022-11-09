@@ -8,22 +8,29 @@
     <link rel="stylesheet" href="./index.css">
 </head>
 <body>
+    <!-- link js -->
     <script src="./index.js"></script>
+    <!-- creates flexbox container -->
     <div class="flexbox">
+        <!-- title -->
         <div class="block">
             <h1>Tic-Tac-Toe</h1>
         </div>
+        <!-- start button -->
         <div>
             <button onclick="game()" id="start">Click to Play</button>
         </div>
+        <!-- display player turn -->
         <div>
             <span class="span">Player: </span>
             <span id="player" class="span">X</span>
         </div>
+        <!-- displays turn number -->
         <div>
             <span class="span">Turn: </span>
             <span id="turn" class="span">0</span>
         </div>
+        <!-- creates all buttons for the 3x3 play area -->
         <div>
             <button class="but left" id="square1" onclick="mark1('00');checkWin()"><span id="sqr1">&nbsp;</span></button>
             <button class="but" id="square2" onclick="mark2('01');checkWin()"><span id="sqr2">&nbsp;</span></button>
@@ -40,13 +47,11 @@
             <button class="but right" id="square9" onclick="mark9('22');checkWin()"><span id="sqr9">&nbsp;</span></button>
         </div>
         <br>
+        <!-- prints results of winner or draw -->
         <div>
             <span id="printW" class="span"></span>
         </div>
-        <!-- <br>
-        <div>
-            <span class="span">Wins</span>
-        </div> -->
+        <!-- keeps track of number of wins -->
         <div class="wins">
             <span class="span">X-Wins: <span id="xWin">0</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
             <span class="span">O-Wins: <span id="oWin">0</span></span>
