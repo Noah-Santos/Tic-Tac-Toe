@@ -1,11 +1,15 @@
 "use strict";
 //creating board array
+let board =[]
 function game(){
-    let board=[
+    board=[
         ["null", "null", "null"],
         ["null", "null", "null"],
         ["null", "null", "null"]
     ];
+    for(let i=1;i<10;i++){
+        document.getElementById(`sqr${i}`).innerHTML="&nbsp;";
+    }
 }
 let turn=0;
 let xWin=0;
