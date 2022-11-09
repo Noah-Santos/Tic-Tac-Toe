@@ -57,6 +57,7 @@ function change(x,y, square){
         }
     }
     // showBoard(x, y);
+    console.log(board);
 }
 
 
@@ -88,57 +89,39 @@ function checkWin(){
 
 //changes the button to an image if clicked
 //also changes the turn number and player turn
-function mark1(){
-    let x =0;
-    let y=0;
-    let square="sqr1";
-    change(x,y,square);
+function mark1(position){
+    let place = position.split('');
+    change(parseInt(place[0]),parseInt(place[1]),"sqr1");
 }
-function mark2(){
-    let x =0;
-    let y=1;
-    let square="sqr2";
-    change(x,y,square);
+function mark2(position){
+    let place = position.split('');
+    change(parseInt(place[0]),parseInt(place[1]),"sqr2");
 }
-function mark3(){
-    let x =0;
-    let y=2;
-    let square="sqr3";
-    change(x,y,square);
+function mark3(position){
+    let place = position.split('');
+    change(parseInt(place[0]),parseInt(place[1]),"sqr3");
 }
-function mark4(){
-    let x =1;
-    let y=0;
-    let square="sqr4";
-    change(x,y,square);
+function mark4(position){
+    let place = position.split('');
+    change(parseInt(place[0]),parseInt(place[1]),"sqr4");
 }
-function mark5(){
-    let x =1;
-    let y=1;
-    let square="sqr5";
-    change(x,y,square);
+function mark5(position){
+    let place = position.split('');
+    change(parseInt(place[0]),parseInt(place[1]),"sqr5");
 }
-function mark6(){
-    let x =1;
-    let y=2;
-    let square="sqr6";
-    change(x,y,square);
+function mark6(position){
+    let place = position.split('');
+    change(parseInt(place[0]),parseInt(place[1]),"sqr6");
 }
-function mark7(){
-    let x =2;
-    let y=0;
-    let square="sqr7";
-    change(x,y,square);
+function mark7(position){
+    let place = position.split('');
+    change(parseInt(place[0]),parseInt(place[1]),"sqr7");
 }
-function mark8(){
-    let x =2;
-    let y=1;
-    let square="sqr8";
-    change(x,y,square);
+function mark8(position){
+    let place = position.split('');
+    change(parseInt(place[0]),parseInt(place[1]),"sqr8");
 }
-function mark9(){
-    let x =2;
-    let y=2;
-    let square="sqr9";
-    change(x,y,square);
+function mark9(position){
+    let place = position.split('');
+    change(parseInt(place[0]),parseInt(place[1]),"sqr9");
 }
