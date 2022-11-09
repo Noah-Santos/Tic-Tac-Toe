@@ -14,7 +14,16 @@ function game(){
     document.getElementById("printW").innerHTML="";
     turn=0;
     document.getElementById("turn").innerHTML=turn;
-        document.getElementById("player").innerHTML="X";
+    document.getElementById("player").innerHTML="X";
+    document.getElementById("square1").style.backgroundColor="white"
+    document.getElementById("square2").style.backgroundColor="white";
+    document.getElementById("square3").style.backgroundColor="white";
+    document.getElementById("square4").style.backgroundColor="white"
+    document.getElementById("square5").style.backgroundColor="white";
+    document.getElementById("square6").style.backgroundColor="white";
+    document.getElementById("square7").style.backgroundColor="white"
+    document.getElementById("square8").style.backgroundColor="white";
+    document.getElementById("square9").style.backgroundColor="white";
 }
 let go=true;
 //win variable count
@@ -81,6 +90,7 @@ function checkWin(){
         }
     }
     diagonal();
+    highLight();
     // if not diagonal, horizontal, or vertical, will print draw
     if(!diagonal() && !v && turn==9){
         document.getElementById("printW").innerHTML="Draw";
@@ -112,30 +122,68 @@ function diagonal(){
             xWin++;
             document.getElementById("xWin").innerHTML=xWin;
             document.getElementById("printW").innerHTML="X Wins";
+            document.getElementById("square1").style.backgroundColor="purple"
+            document.getElementById("square5").style.backgroundColor="purple";
+            document.getElementById("square9").style.backgroundColor="purple";
             return true;
         }else if(board[0][0]=="o"){
             oWin++;
             document.getElementById("oWin").innerHTML=oWin;
             document.getElementById("printW").innerHTML="O Wins";
+            document.getElementById("square1").style.backgroundColor="purple"
+            document.getElementById("square5").style.backgroundColor="purple";
+            document.getElementById("square9").style.backgroundColor="purple";
             return true;
         }
-        document.getElementById("square1").style.backgroundColor="purple";
-        document.getElementById("square5").style.backgroundColor="purple";
-        document.getElementById("square9").style.backgroundColor="purple";
     }else if(board[0][2]===board[1][1] && board[0][2]===board[2][0] && board[0][2]!="null"){
         if(board[0][2]=="x"){
             xWin++;
             document.getElementById("xWin").innerHTML=xWin;
             document.getElementById("printW").innerHTML="X Wins";
+            document.getElementById("square3").style.backgroundColor="purple"
+            document.getElementById("square5").style.backgroundColor="purple";
+            document.getElementById("square7").style.backgroundColor="purple";
             return true;
         }else if(board[0][2]=="o"){
             oWin++;
             document.getElementById("oWin").innerHTML=oWin;
             document.getElementById("printW").innerHTML="O Wins";
+            document.getElementById("square3").style.backgroundColor="purple"
+            document.getElementById("square5").style.backgroundColor="purple";
+            document.getElementById("square7").style.backgroundColor="purple";
             return true;
         }
     }
     return false;
+}
+
+//higlights the winning horizontal and vertical winnings
+function highLight(){
+    if(board[0][0]==board[1][0]&&board[2][0]==board[0][0]&&board[0][0]!="null"){
+        document.getElementById("square1").style.backgroundColor="purple"
+        document.getElementById("square4").style.backgroundColor="purple";
+        document.getElementById("square7").style.backgroundColor="purple";
+    }else if(board[0][1]==board[1][1]&&board[2][1]==board[0][1]&board[0][1]!="null"){
+        document.getElementById("square2").style.backgroundColor="purple"
+        document.getElementById("square5").style.backgroundColor="purple";
+        document.getElementById("square8").style.backgroundColor="purple";
+    }else if(board[0][2]==board[1][2]&&board[2][2]==board[0][2]&board[0][2]!="null"){
+        document.getElementById("square3").style.backgroundColor="purple"
+        document.getElementById("square6").style.backgroundColor="purple";
+        document.getElementById("square9").style.backgroundColor="purple";
+    }else if(board[0][0]==board[0][1]&&board[0][2]==board[0][0]&&board[0][0]!="null"){
+        document.getElementById("square1").style.backgroundColor="purple"
+        document.getElementById("square2").style.backgroundColor="purple";
+        document.getElementById("square3").style.backgroundColor="purple";
+    }else if(board[1][0]==board[1][1]&&board[1][2]==board[1][0]&board[1][0]!="null"){
+        document.getElementById("square4").style.backgroundColor="purple"
+        document.getElementById("square5").style.backgroundColor="purple";
+        document.getElementById("square6").style.backgroundColor="purple";
+    }else if(board[2][0]==board[2][1]&&board[2][2]==board[2][0]&board[2][0]!="null"){
+        document.getElementById("square7").style.backgroundColor="purple"
+        document.getElementById("square8").style.backgroundColor="purple";
+        document.getElementById("square9").style.backgroundColor="purple";
+    }
 }
 
 //changes the turn number and player turn
@@ -174,4 +222,7 @@ function mark8(position){
 function mark9(position){
     let place = position.split('');
     change(parseInt(place[0]),parseInt(place[1]),"sqr9");
+}
+function btn(){
+    document.getElementById("start").style.backgroundColor="salmon"
 }
