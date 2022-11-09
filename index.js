@@ -15,17 +15,11 @@ function game(){
     turn=0;
     document.getElementById("turn").innerHTML=turn;
     document.getElementById("player").innerHTML="X";
-    document.getElementById("square1").style.backgroundColor="white"
-    document.getElementById("square2").style.backgroundColor="white";
-    document.getElementById("square3").style.backgroundColor="white";
-    document.getElementById("square4").style.backgroundColor="white"
-    document.getElementById("square5").style.backgroundColor="white";
-    document.getElementById("square6").style.backgroundColor="white";
-    document.getElementById("square7").style.backgroundColor="white"
-    document.getElementById("square8").style.backgroundColor="white";
-    document.getElementById("square9").style.backgroundColor="white";
+    for(let i=1;i<10;i++){
+        document.getElementById(`square${i}`).style.backgroundColor="white";
+    }
 }
-let go=true;
+
 //win variable count
 let xWin=0;
 let oWin=0;
@@ -222,7 +216,4 @@ function mark8(position){
 function mark9(position){
     let place = position.split('');
     change(parseInt(place[0]),parseInt(place[1]),"sqr9");
-}
-function btn(){
-    document.getElementById("start").style.backgroundColor="salmon"
 }
