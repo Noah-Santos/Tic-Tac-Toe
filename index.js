@@ -1,6 +1,7 @@
 "use strict";
 //creating board array
 let board =[]
+let turn=0;
 function game(){
     board=[
         ["null", "null", "null"],
@@ -10,8 +11,13 @@ function game(){
     for(let i=1;i<10;i++){
         document.getElementById(`sqr${i}`).innerHTML="&nbsp;";
     }
+    document.getElementById("printW").innerHTML="";
+    turn=0;
+    document.getElementById("turn").innerHTML=turn;
+        document.getElementById("player").innerHTML="X";
 }
-let turn=0;
+let go=true;
+
 let xWin=0;
 let oWin=0;
 
@@ -45,8 +51,9 @@ function change(x,y, square){
     console.log(board);
 }
 
-//function to check for winner also checks for draws
+//function to check for winner horizontally and vertically
 function checkWin(){
+    let v,h;
     for(let c=0;c<3;c++){
         let xChecks=0;
         let oChecks=0;
@@ -56,7 +63,7 @@ function checkWin(){
             }else if(board[r][c]=="o"){
                 oChecks++;
             }
-            check(xChecks,oChecks);
+            v=check(xChecks,oChecks);
         }
     }
     for(let c=0;c<3;c++){
@@ -68,8 +75,14 @@ function checkWin(){
             }else if(board[c][r]=="o"){
                 oChecks++;
             }
-            check(xChecks,oChecks);
+            h=check(xChecks,oChecks);
         }
+    }
+    diagonal();
+    if(!diagonal() && !v && turn==9){
+        document.getElementById("printW").innerHTML="Draw";
+    }else if(!diagonal() && !h && turn==9){
+        document.getElementById("printW").innerHTML="Draw";
     }
 }
 
@@ -79,11 +92,44 @@ function check(xChecks,oChecks){
         xWin++;
         document.getElementById("xWin").innerHTML=xWin;
         document.getElementById("printW").innerHTML="X Wins";
+        return true;
     }else if(oChecks==3){
         oWin++;
         document.getElementById("oWin").innerHTML=oWin;
         document.getElementById("printW").innerHTML="O Wins";
+        return true;
     }
+    return false;
+}
+
+//checks for diagonal wins
+function diagonal(){
+    if(board[0][0]===board[1][1] && board[0][0]===board[2][2]){
+        if(board[0][0]=="x"){
+            xWin++;
+            document.getElementById("xWin").innerHTML=xWin;
+            document.getElementById("printW").innerHTML="X Wins";
+            return true;
+        }else if(board[0][0]=="o"){
+            oWin++;
+            document.getElementById("oWin").innerHTML=oWin;
+            document.getElementById("printW").innerHTML="O Wins";
+            return true;
+        }
+    }else if(board[0][2]===board[1][1] && board[0][2]===board[2][0]){
+        if(board[0][2]=="x"){
+            xWin++;
+            document.getElementById("xWin").innerHTML=xWin;
+            document.getElementById("printW").innerHTML="X Wins";
+            return true;
+        }else if(board[0][2]=="o"){
+            oWin++;
+            document.getElementById("oWin").innerHTML=oWin;
+            document.getElementById("printW").innerHTML="O Wins";
+            return true;
+        }
+    }
+    return false;
 }
 
 //changes the turn number and player turn
