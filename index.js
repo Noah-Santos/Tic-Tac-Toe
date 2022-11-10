@@ -17,6 +17,7 @@ function game(){
     document.getElementById("player").innerHTML="X";
     for(let i=1;i<10;i++){
         document.getElementById(`square${i}`).style.backgroundColor="white";
+        document.getElementById(`square${i}`).disabled=false;
     }
 }
 
@@ -93,15 +94,24 @@ function checkWin(){
     }
 }
 
+//stops player from clicking any button after winning
+function stop(){
+    for(let i=1;i<10;i++){
+        document.getElementById(`square${i}`).disabled=true;
+    }
+}
+
 //checks for hoirzontal and vertical wins
 function check(xChecks,oChecks){
     if(xChecks==3){
         xWin++;
+        stop();
         document.getElementById("xWin").innerHTML=xWin;
         document.getElementById("printW").innerHTML="X Wins";
         return true;
     }else if(oChecks==3){
         oWin++;
+        stop();
         document.getElementById("oWin").innerHTML=oWin;
         document.getElementById("printW").innerHTML="O Wins";
         return true;
@@ -114,6 +124,7 @@ function diagonal(){
     if(board[0][0]===board[1][1] && board[0][0]===board[2][2] && board[0][0]!="null"){
         if(board[0][0]=="x"){
             xWin++;
+            stop();
             document.getElementById("xWin").innerHTML=xWin;
             document.getElementById("printW").innerHTML="X Wins";
             document.getElementById("square1").style.backgroundColor="purple"
@@ -122,6 +133,7 @@ function diagonal(){
             return true;
         }else if(board[0][0]=="o"){
             oWin++;
+            stop();
             document.getElementById("oWin").innerHTML=oWin;
             document.getElementById("printW").innerHTML="O Wins";
             document.getElementById("square1").style.backgroundColor="purple"
@@ -132,6 +144,7 @@ function diagonal(){
     }else if(board[0][2]===board[1][1] && board[0][2]===board[2][0] && board[0][2]!="null"){
         if(board[0][2]=="x"){
             xWin++;
+            stop();
             document.getElementById("xWin").innerHTML=xWin;
             document.getElementById("printW").innerHTML="X Wins";
             document.getElementById("square3").style.backgroundColor="purple"
@@ -140,6 +153,7 @@ function diagonal(){
             return true;
         }else if(board[0][2]=="o"){
             oWin++;
+            stop();
             document.getElementById("oWin").innerHTML=oWin;
             document.getElementById("printW").innerHTML="O Wins";
             document.getElementById("square3").style.backgroundColor="purple"
