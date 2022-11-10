@@ -2,6 +2,7 @@
 //creating board array
 let board =[]
 let turn=0;
+//resets the game
 function game(){
     board=[
         ["null", "null", "null"],
